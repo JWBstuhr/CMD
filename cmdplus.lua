@@ -21,12 +21,12 @@ end
 local function stup(stnum)
     if stnum == 1 then
         fs.makeDir("/cmdp/")
-        local getStartup = io.open("/startup.lua", 'rb')
+        if fs.exists("/startup.lua") then local getStartup = io.open("/startup.lua", 'rb') local temp2 = getStartup:read "*a" local temp = 1 else local temp2 = " " end
         local editStartup = fs.open("/startup.lua", 'w')
-        local content = "shell.setAlias(\"cmd\",shell.getRunningProgram())" .. getStartup:read "*a" -- cmd alias
+        local content = "shell.setAlias(\"cmd\",shell.getRunningProgram())" .. temp2 -- cmd alias
         editStartup.write(content)
         editStartup.close()
-        getStartup.close()
+        if temp == 1 then getStartup.close() end
     elseif stnum == 2 then
         print("-----")
         print("CMD+ runs on modems, and so needs a channel to run on. Use any number, 0-65535, and make sure it doesn't conflict. Usually you would have this number from setting up the CMD+ terminal.")
