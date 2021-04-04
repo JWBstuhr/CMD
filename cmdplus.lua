@@ -23,7 +23,7 @@ local function stup(stnum)
         fs.makeDir("/cmdp/")
         local getStartup = io.open("/startup.lua", 'rb')
         local editStartup = fs.open("/startup.lua", 'w')
-        local content = "shell.setAlias("cmd",shell.getRunningProgram())" .. getStartup:read "*a" -- cmd alias
+        local content = "shell.setAlias(\"cmd\",shell.getRunningProgram())" .. getStartup:read "*a" -- cmd alias
         editStartup.write(content)
         editStartup.close()
         getStartup.close()
