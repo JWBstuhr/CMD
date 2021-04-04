@@ -25,6 +25,7 @@ local function stup(stnum)
             local getStartup = io.open("/startup.lua", 'rb')
             local temp2 = getStartup:read "*a" local temp = 1
         else
+            local temp = 0
             local temp2 = " "
         end
         local editStartup = fs.open("/startup.lua", 'w')
