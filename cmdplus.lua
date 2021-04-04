@@ -21,7 +21,12 @@ end
 local function stup(stnum)
     if stnum == 1 then
         fs.makeDir("/cmdp/")
-        if fs.exists("/startup.lua") then local getStartup = io.open("/startup.lua", 'rb') local temp2 = getStartup:read "*a" local temp = 1 else local temp2 = " " end
+        if fs.exists("/startup.lua") then
+            local getStartup = io.open("/startup.lua", 'rb')
+            local temp2 = getStartup:read "*a" local temp = 1
+        else
+            local temp2 = " "
+        end
         local editStartup = fs.open("/startup.lua", 'w')
         local content = "shell.setAlias(\"cmd\",shell.getRunningProgram())" .. temp2 -- cmd alias
         editStartup.write(content)
