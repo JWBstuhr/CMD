@@ -25,4 +25,4 @@ Just like normal commands, but instead of '/' you prefix with the file name or i
 
 Time command has more inbuilt times (noon, etc) (for pre-1.13) and can also be used with just 't' instead of 'time'.
 
-Weather command also has an alias of 'w'.
+Weather command also has an alias of 'w', supporting 'r', 't', and 'c' as shortcuts for 'rain', 'thunder', and 'clear' respectively. 
