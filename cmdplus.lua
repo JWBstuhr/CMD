@@ -20,8 +20,13 @@ end
 -- First Time Setup
 local function stup(stnum)
     if stnum == 1 then
-        shell.setAlias("cmd",shell.getRunningProgram()) -- cmd alias
         fs.makeDir("/cmdp/")
+        local getStartup = io.open("/startup.lua", 'rb')
+        local editStartup = fs.open("/startup.lua", 'w')
+        local content = "shell.setAlias("cmd",shell.getRunningProgram())" .. getStartup:read "*a" -- cmd alias
+        editStartup.write(content)
+        editStartup.close()
+        getStartup.close()
     elseif stnum == 2 then
         print("-----")
         print("CMD+ runs on modems, and so needs a channel to run on. Use any number, 0-65535, and make sure it doesn't conflict. Usually you would have this number from setting up the CMD+ terminal.")
@@ -54,7 +59,7 @@ end
 -- Get our modem channel
 local cfg = tload("/cmdp/cfg")
 -- Read through the commands, etc. If it doesn't have any new functions, it's just passed on fully.
-if tArgs[1] == "time" or tArgs[1] == "t" or tArgs[1] == "weather" or tArgs[1] == "w" or tArgs[1] == "kill" then -- I don't care how inefficient this is. It does the job. Basically, it separates the new functions and aliases- just accept it.
+if tArgs[1] == "time" or tArgs[1] == "t" or tArgs[1] == "w" then -- I don't care how inefficient this is. It does the job. Basically, it separates the new functions and aliases- just accept it.
     local msg = {
         type = "args"
     }
